@@ -1,13 +1,13 @@
 package zoo.animal;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 public class DiseaseNote {
 
     /** Болезнь */
     private String disease;
     /** Когда заболел */
-    private LocalDateTime time;
+    private Date time;
     /** Дополнения */
     private final String comment;
 
@@ -17,7 +17,7 @@ public class DiseaseNote {
      * @param time когда заболел
      * @param comment дополнения
      */
-    public DiseaseNote(String disease, LocalDateTime time, String comment) {
+    public DiseaseNote(String disease, Date time, String comment) {
         this.disease = disease;
         this.time = time;
         this.comment = comment;
@@ -27,7 +27,7 @@ public class DiseaseNote {
         return disease;
     }
 
-    public LocalDateTime getTime() {
+    public Date getTime() {
         return time;
     }
 

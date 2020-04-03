@@ -1,5 +1,6 @@
 package zoo;
 
+import tracking.TrackingService;
 import zoo.animal.Animal;
 import zoo.employee.Employee;
 
@@ -8,6 +9,11 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Zoo {
+
+    private TrackingService trackingService;
+
+    /** размер стороны (зоопарк квадратный) */
+    public static final double size = 10;
 
     /** Название зоопарка */
     private String title;
@@ -24,6 +30,7 @@ public class Zoo {
         this.title = title;
         employees = new ArrayList<>();
         animals = new ArrayList<>();
+        trackingService = new TrackingService();
     }
 
     /**
@@ -36,17 +43,24 @@ public class Zoo {
             return;
         }
         animals.add(animal);
+        trackingService.add(animal);
         if (employees.contains(employee)) {
             employee.add(animal);
             animal.add(employee);
         }
     }
+
+    public void set(TrackingService trackingService) {
+        this.trackingService = trackingService;
+    }
+
     /**
      * Добавление сотрудников
      * @param employees сотрудники
      */
     public void add(Employee... employees) {
         this.employees.addAll(Arrays.asList(employees));
+        trackingService.add(employees);
     }
     /**
      * Удаление животных

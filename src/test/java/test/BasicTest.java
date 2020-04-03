@@ -4,16 +4,14 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
 import zoo.Zoo;
 import zoo.animal.Animal;
 import zoo.animal.DiseaseNote;
 import zoo.employee.Employee;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
+import java.util.*;
 
 @DisplayName("Зоопарк: проверка основы")
 public class BasicTest {
@@ -28,12 +26,13 @@ public class BasicTest {
     public void Init() {
         zoo = new Zoo("Сан-Диего");
 
-        Jack = new Employee("Джек", LocalDate.of(1960,5,3));
-        John  = new Employee("Джон", LocalDate.of(1975,8,1));
+        Jack = new Employee("Джек", LocalDate.of(1981, Calendar.FEBRUARY, 4));
+        John  = new Employee("Джон", LocalDate.of(1980, Calendar.FEBRUARY, 3));
 
         lion = new Animal("лев", LocalDate.now());
         wolf = new Animal("волк", LocalDate.now());
     }
+
 
     @DisplayName("Приём на работу и увольнение сотрудников")
     @Test
@@ -66,8 +65,8 @@ public class BasicTest {
         zoo.add(John);
         zoo.add(lion, John);
 
-        DiseaseNote plague = new DiseaseNote("чума", LocalDateTime.now(), "");
-        DiseaseNote flu = new DiseaseNote("грипп", LocalDateTime.now(), "тяжелый случай");
+        DiseaseNote plague = new DiseaseNote("чума", new Date(), "");
+        DiseaseNote flu = new DiseaseNote("грипп", new Date(), "тяжелый случай");
 
         lion.add(plague);
         lion.add(flu);
